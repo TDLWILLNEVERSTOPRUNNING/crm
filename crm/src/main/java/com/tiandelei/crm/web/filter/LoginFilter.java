@@ -17,7 +17,7 @@ public class LoginFilter implements Filter {
     @Override
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
 
-        System.out.println("执行判断有没有登录过得过滤器");
+        System.out.println("执行判断有没有登录过的过滤器");
 
         /*
         从request中取session，从session中取User

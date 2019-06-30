@@ -9,7 +9,8 @@
   <typeAliases>
   
   	<package name="com.tiandelei.crm.settings.domin"/>
-  	
+  	<package name="com.tiandelei.crm.workbench.domain"/>
+
   
   </typeAliases>
   
@@ -29,7 +30,8 @@
   <mappers>
    
       <package name="com.tiandelei.crm.settings.dao"/>
-    
+      <package name="com.tiandelei.crm.workbench.dao"/>
+
   </mappers>
 </configuration>
 

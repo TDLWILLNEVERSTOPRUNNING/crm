@@ -8,6 +8,7 @@ import com.tiandelei.crm.utils.DateTimeUtil;
 import com.tiandelei.crm.utils.SqlSessionUtil;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -63,5 +64,14 @@ public class UserServiceImpl implements UserService {
 
         //如果程序能够走到该行，说明没有欸有抛出任何异常，说名登录成功返回user对象
         return user;
+    }
+
+    //查询所有员工姓名
+    @Override
+    public List<User> getUserList() {
+
+        List<User> ulist = userDao.getUserList();
+
+        return ulist;
     }
 }

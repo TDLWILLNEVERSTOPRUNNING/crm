@@ -15,6 +15,11 @@
 
         $(function () {
 
+            //页面套页面解决方案
+            if (window.top!=window){ //如果顶层窗口不是当前窗口
+                window.top.location = window.location; //要将当前窗口设置为顶层窗口
+            }
+
             //页面加载完毕后，把页面信息清空
             $("#loginAct").val("");
 
