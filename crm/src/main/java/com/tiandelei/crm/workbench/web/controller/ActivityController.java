@@ -44,7 +44,24 @@ public class ActivityController extends HttpServlet {
         } else if ("/workbench/activity/delete.do".equals(Path)) {
 
             delete(request, response);
+        } else if ("/workbench/activity/getUserListAndActivity.do".equals(Path)) {
+
+            getUserListAndActivity(request, response);
         }
+    }
+
+    private void getUserListAndActivity(HttpServletRequest request, HttpServletResponse response) {
+
+        System.out.println("取得用户信息列表和市场活动单条");
+
+        String id = request.getParameter("id");
+
+        ActivityService as = (ActivityService) ServiceFactory.getService(new ActivityServiceImpl());
+
+        Map<String,Object> map = as.getUserListAndActivity(id);
+
+        PrintJson.printJsonObj(response, map);
+
     }
 
     private void delete(HttpServletRequest request, HttpServletResponse response) {
