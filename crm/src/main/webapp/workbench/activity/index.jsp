@@ -202,7 +202,6 @@
                             if (i < $xz.length - 1) {
                                 param += "&";
                             }
-
                         }
 
                         $.ajax({
@@ -219,7 +218,9 @@
                                     pageList(1,2);
 
                                 } else {
-                                    alert("s删除失败")
+
+                                    alert("删除失败")
+
                                 }
                             }
                         })
@@ -539,14 +540,11 @@
                 我们应该为该按钮起一个id名字，然后通过该值绑定事件，以触发js代码的形式来控制按钮的行为
 
                 --%>
-                <button type="button" class="btn btn-primary" id="addBtn"><span class="glyphicon glyphicon-plus"></span>
-                    创建
+                <button type="button" class="btn btn-primary" id="addBtn"><span class="glyphicon glyphicon-plus"></span>创建
                 </button>
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#editActivityModal"><span
-                        class="glyphicon glyphicon-pencil"></span> 修改
+                <button type="button" class="btn btn-default" ><span class="glyphicon glyphicon-pencil"></span> 修改
                 </button>
-                <button type="button" class="btn btn-danger" id="deleteBtn"><span
-                        class="glyphicon glyphicon-minus"></span> 删除
+                <button type="button" class="btn btn-danger" id="deleteBtn"><span class="glyphicon glyphicon-minus"></span> 删除
                 </button>
             </div>
 

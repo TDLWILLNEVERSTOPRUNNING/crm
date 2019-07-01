@@ -57,7 +57,7 @@ public class ActivityController extends HttpServlet {
 
         boolean flag = as.delete(ids);
 
-        PrintJson.printJsonFlag(response, false);
+        PrintJson.printJsonFlag(response, true);
 
     }
 
