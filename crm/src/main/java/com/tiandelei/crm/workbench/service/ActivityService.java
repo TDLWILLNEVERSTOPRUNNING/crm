@@ -17,4 +17,6 @@ public interface ActivityService {
     boolean delete(String[] ids);
 
     Map<String, Object> getUserListAndActivity(String id);
+
+    Boolean update(Activity a);
 }

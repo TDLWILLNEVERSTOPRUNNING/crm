@@ -111,4 +111,19 @@ public class ActivityServiceImpl implements ActivityService {
         //返回一个map
         return map;
     }
+
+    @Override
+    public Boolean update(Activity a) {
+
+        boolean flag = true;
+
+        int count = activityDao.update(a);
+
+        //添加一条受影响的只能是一条
+        if (count != 1) {
+            flag = false;
+        }
+
+        return flag;
+    }
 }

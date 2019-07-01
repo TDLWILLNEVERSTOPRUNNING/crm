@@ -106,6 +106,8 @@
                             //添加成功
 
                             //刷新列表
+                            // pageList(1, 2);
+                            pageList(1,$("#activityPage").bs_pagination('getOption', 'rowsPerPage'));
 
                             //清空模态窗口中的信息
 
@@ -215,7 +217,7 @@
                                 if (data.success) {
                                     //删除成功
                                     //刷新列表
-                                    pageList(1, 2);
+                                    pageList(1,$("#activityPage").bs_pagination('getOption', 'rowsPerPage'));
 
                                 } else {
 
@@ -248,15 +250,15 @@
                     $.ajax({
 
                         url: "workbench/activity/getUserListAndActivity.do",
-                        data: {"id":id},
+                        data: {"id": id},
                         typ: "get",
                         dataType: "json",
                         success: function (data) {
                             var html = "<option></option>";
 
-                            $.each(data.uList,function (i,n){
+                            $.each(data.uList, function (i, n) {
 
-                                html += "<option value='"+n.id+"'>"+n.name+"</option>"
+                                html += "<option value='" + n.id + "'>" + n.name + "</option>"
 
                             });
 
@@ -276,12 +278,51 @@
                             $("#editActivityModal").modal("show");
 
 
-
-
                         }
                     })
 
                 }
+            })
+
+            //为更新按钮绑定事件
+            $("#updateBtn").click(function () {
+
+                $.ajax({
+
+                    url: "workbench/activity/update.do",
+                    data: {
+
+                        "id": $.trim($("#edit-id").val()),
+                        "owner": $.trim($("#edit-owner").val()),
+                        "name": $.trim($("#edit-name").val()),
+                        "startDate": $.trim($("#edit-startDate").val()),
+                        "endDate": $.trim($("#edit-endDate").val()),
+                        "cost": $.trim($("#edit-cost").val()),
+                        "description": $.trim($("#edit-description").val())
+
+                    },
+                    type: "post",  //添加 删除 修改 登录 post其他get
+                    datatype: "json",
+                    success: function (data) { //{"success":true/false}
+
+
+                        if (!data.success) {
+
+                            //修改成功
+                            //刷新列表
+                            pageList($("#activityPage").bs_pagination('getOption', 'currentPage'),$("#activityPage").bs_pagination('getOption', 'rowsPerPage'));
+
+                            //关闭模态窗口
+                            $("#editActivityModal").modal("hide");
+                        } else {
+
+                            alert("市场活动修改失败");
+
+
+                        }
+                    }
+                });
+
             })
 
         });
@@ -530,7 +571,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">更新</button>
+                <button type="button" class="btn btn-primary" id="updateBtn">更新</button>
             </div>
         </div>
     </div>

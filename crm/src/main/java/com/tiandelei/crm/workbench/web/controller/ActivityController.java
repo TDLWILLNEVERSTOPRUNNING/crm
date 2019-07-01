@@ -47,7 +47,48 @@ public class ActivityController extends HttpServlet {
         } else if ("/workbench/activity/getUserListAndActivity.do".equals(Path)) {
 
             getUserListAndActivity(request, response);
+        } else if ("/workbench/activity/update.do".equals(Path)) {
+
+            update(request, response);
         }
+    }
+
+    private void update(HttpServletRequest request, HttpServletResponse response) {
+
+        System.out.println("执行市场活动修改操作");
+
+        String id = request.getParameter("id");
+        String owner = request.getParameter("owner");
+        String name = request.getParameter("name");
+        String startDate = request.getParameter("startDate");
+        String endDate = request.getParameter("endDate");
+        String cost = request.getParameter("cost");
+        String description = request.getParameter("description");
+
+        //修改时间，当前系统时间
+        String editTime = DateTimeUtil.getSysTime();
+        //修改人 ：当前登录的用户（从session中取user再取name）
+        String editBy = ((User) request.getSession().getAttribute("user")).getName();
+
+        Activity a = new Activity();
+
+        a.setId(id);
+        a.setOwner(owner);
+        a.setName(name);
+        a.setStartDate(startDate);
+        a.setEndDate(endDate);
+        a.setCost(cost);
+        a.setDescription(description);
+        a.setEditBy(editBy);
+        a.setEditTime(editTime);
+
+
+        ActivityService as = (ActivityService) ServiceFactory.getService(new ActivityServiceImpl());
+
+        Boolean flag = as.update(a);
+
+        PrintJson.printJsonFlag(response, flag);
+
     }
 
     private void getUserListAndActivity(HttpServletRequest request, HttpServletResponse response) {
