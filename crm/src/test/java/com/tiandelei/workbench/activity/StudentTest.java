@@ -32,8 +32,6 @@ public class StudentTest {
 
         Assert.assertEquals(flag, true
         );
-
-
     }
 
     @Test
