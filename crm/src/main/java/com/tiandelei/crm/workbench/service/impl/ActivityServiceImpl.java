@@ -7,6 +7,7 @@ import com.tiandelei.crm.vo.Paginationvo;
 import com.tiandelei.crm.workbench.dao.ActivityDao;
 import com.tiandelei.crm.workbench.dao.ActivityRemarkDao;
 import com.tiandelei.crm.workbench.domain.Activity;
+import com.tiandelei.crm.workbench.domain.ActivityRemark;
 import com.tiandelei.crm.workbench.service.ActivityService;
 
 import java.util.HashMap;
@@ -96,7 +97,7 @@ public class ActivityServiceImpl implements ActivityService {
     @Override
     public Map<String, Object> getUserListAndActivity(String id) {
         //取uList
-        List<User> uList = UserDao.getUserList();
+        List<User> uList  = UserDao.getUserList();
 
         //取a
         Activity a = activityDao.getById(id);
@@ -122,6 +123,65 @@ public class ActivityServiceImpl implements ActivityService {
         //添加一条受影响的只能是一条
         if (count != 1) {
             flag = false;
+        }
+
+        return flag;
+    }
+
+    @Override
+    public Activity detail(String id) {
+        Activity a = activityDao.getActivityById(id);
+
+        return a;
+    }
+
+    @Override
+    public List<ActivityRemark> getRemarkListByAid(String activityId) {
+
+        List<ActivityRemark> aList = activityRemarkDao.getRemarkListByAid(activityId);
+
+        return aList;
+    }
+
+    @Override
+    public boolean deleteRemark(String id) {
+        boolean flag = true;
+
+        int count = activityRemarkDao.deleteRemark(id);
+
+        if (count != 1) {
+            flag = false;
+        }
+
+        return flag;
+    }
+
+    @Override
+    public Boolean saveRemark(ActivityRemark ar) {
+        boolean flag = true;
+
+        int count = activityRemarkDao.saveRemark(ar);
+
+        if(count!=1){
+
+            flag = false;
+
+        }
+
+        return flag;
+    }
+
+    @Override
+    public boolean updateRemark(ActivityRemark ar) {
+
+        boolean flag = true;
+
+        int count = activityRemarkDao.updateRemark(ar);
+
+        if(count!=1){
+
+            flag = false;
+
         }
 
         return flag;

@@ -2,7 +2,9 @@ package com.tiandelei.crm.workbench.service;
 
 import com.tiandelei.crm.vo.Paginationvo;
 import com.tiandelei.crm.workbench.domain.Activity;
+import com.tiandelei.crm.workbench.domain.ActivityRemark;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -19,4 +21,14 @@ public interface ActivityService {
     Map<String, Object> getUserListAndActivity(String id);
 
     Boolean update(Activity a);
+
+    Activity detail(String id);
+
+    List<ActivityRemark> getRemarkListByAid(String activityId);
+
+    boolean deleteRemark(String id);
+
+    Boolean saveRemark(ActivityRemark ar);
+
+    boolean updateRemark(ActivityRemark ar);
 }
