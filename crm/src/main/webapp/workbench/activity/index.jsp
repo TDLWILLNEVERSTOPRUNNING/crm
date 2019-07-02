@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
 
     <link href="jquery/bootstrap_3.3.0/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
-    link href="jquery/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" type="text/css"
+    <link href="jquery/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" type="text/css"
     rel="stylesheet"/>
 
     <script type="text/javascript" src="jquery/jquery-1.11.1-min.js"></script>
@@ -178,7 +178,7 @@
 
             $("#activityBody").on("click", $("input[name=xz]"), function () {
                 $("#qx").prop("checked", $("input[name=xz]").length == $("input[name=xz]:checked").length);
-            })
+            });
 
             //给删除按钮绑定事件
             $("#deleteBtn").click(function () {
@@ -228,7 +228,7 @@
                         })
                     }
                 }
-            })
+            });
 
             //为修改按钮绑定事件，打开修改操作的模态窗口
             $("#editBtn").click(function () {
@@ -282,7 +282,7 @@
                     })
 
                 }
-            })
+            });
 
             //为更新按钮绑定事件
             $("#updateBtn").click(function () {
