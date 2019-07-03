@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/";
 %>
@@ -87,7 +88,7 @@
                             //在文本域上方新增一个div
                             var html = "";
                             html += '<div id="' + data.ar.id + '" class="remarkDiv" style="height: 60px;">';
-                            html += '<img title="帅雷" src="../../image/tdl-thumbnail.png" style="width: 44px; height:20px;">';
+                            html += '<img title="帅雷" src="<%=request.getContextPath() %>/image/tdl-thumbnail.png" style="width: 30px; height:30px;">';
                             html += '<div style="position: relative; top: -40px; left: 40px;" >';
                             html += '<h5>' + data.ar.noteContent + '</h5>';
                             html += '<font color="gray">市场活动</font> <font color="gray">-</font> <b>${a.name}</b> <small style="color: gray;" id="s'+n.id+'"> ' + (data.ar.createTime) + ' 由' + (data.ar.createBy) + '</small>';
@@ -182,7 +183,7 @@
                     $.each(data, function (i, n) {
 
                         html += '<div id="' + n.id + '" class="remarkDiv" style="height: 60px;">';
-                        html += '<img title="帅雷" src="../../image/tdl-thumbnail.png" style="width: 44px; height:20px;">';
+                        html += '<img title="帅雷" src="<%=request.getContextPath() %>/image/tdl-thumbnail.png" style="width: 30px; height:30px;">';
                         html += '<div style="position: relative; top: -40px; left: 40px;" >';
                         html += '<h5 id="g' + n.id + '">' + n.noteContent + '</h5>';
                         html += '<font color="gray">市场活动</font> <font color="gray">-</font> <b>${a.name}</b> <small style="color: gray;"> ' + (n.editFlag == 0 ? n.createTime : n.editTime) + ' 由' + (n.editFlag == 0 ? n.createBy : n.editBy) + '</small>';
