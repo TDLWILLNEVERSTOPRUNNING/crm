@@ -78,7 +78,7 @@
                     type: "post",
                     dataType: "json",
                     success: function (data) {
-                        alert(data.success)
+
                         if (data.success) {
                             //添加成功，
 
@@ -91,7 +91,7 @@
                             html += '<img title="帅雷" src="<%=request.getContextPath() %>/image/tdl-thumbnail.png" style="width: 30px; height:30px;">';
                             html += '<div style="position: relative; top: -40px; left: 40px;" >';
                             html += '<h5>' + data.ar.noteContent + '</h5>';
-                            html += '<font color="gray">市场活动</font> <font color="gray">-</font> <b>${a.name}</b> <small style="color: gray;" id="s'+n.id+'"> ' + (data.ar.createTime) + ' 由' + (data.ar.createBy) + '</small>';
+                            html += '<font color="gray">市场活动</font> <font color="gray">-</font> <b>${a.name}</b> <small style="color: gray;" id="s\'+n.id+\'"> ' + (data.ar.createTime) + ' 由' + (data.ar.createBy) + '</small>';
                             html += '<div style="position: relative; left: 500px; top: -30px; height: 30px; width: 100px; display: none;">';
                             html += '<a class="myHref" href="javascript:void(0);"><span class="glyphicon glyphicon-edit" style="font-size: 20px; color: red;"></span></a>';
                             html += '&nbsp;&nbsp;&nbsp;&nbsp;';
