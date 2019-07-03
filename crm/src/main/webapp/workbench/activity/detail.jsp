@@ -75,14 +75,14 @@
 
                     },
                     type: "post",
-                    dataTyp: "json",
+                    dataType: "json",
                     success: function (data) {
-
+                        alert(data.success)
                         if (data.success) {
                             //添加成功，
 
                             //清空文本域
-                            ("#remark").val("");
+                            $("#remark").val("");
 
                             //在文本域上方新增一个div
                             var html = "";
@@ -108,7 +108,6 @@
                         }
                     }
                 })
-
             });
 
             //为更新按钮绑定事件，执行备注的修改操作

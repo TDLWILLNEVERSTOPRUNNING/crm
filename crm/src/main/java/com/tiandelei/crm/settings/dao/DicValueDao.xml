@@ -5,6 +5,11 @@
 
 <mapper namespace="com.tiandelei.crm.settings.dao.DicValueDao">
 
+    <select id="getDicValueByTypeCode" resultType="DicValue">
+        
+        select * from tbl_dic_value where typeCode=#{id};
+        
+    </select>
 
 	
 </mapper>
