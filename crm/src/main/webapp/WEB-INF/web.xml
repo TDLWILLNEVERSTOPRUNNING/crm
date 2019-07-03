@@ -51,7 +51,6 @@
     </servlet-mapping>
 
     <!--市场活动控制器-->
-
     <servlet>
         <servlet-name>ActivityController</servlet-name>
         <servlet-class>com.tiandelei.crm.workbench.web.controller.ActivityController</servlet-class>
@@ -69,6 +68,18 @@
         <url-pattern>/workbench/activity/deleteRemark.do</url-pattern>
         <url-pattern>/workbench/activity/saveRemark.do</url-pattern>
         <url-pattern>/workbench/activity/updateRemark.do</url-pattern>
+    </servlet-mapping>
+
+
+
+    <!--线索模块控制器-->
+    <servlet>
+        <servlet-name>ClueController</servlet-name>
+        <servlet-class>com.tiandelei.crm.workbench.web.controller.ClueController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ClueController</servlet-name>
+        <url-pattern>/workbench/clue/xxx.do</url-pattern>
     </servlet-mapping>
 
 </web-app>
