@@ -1,5 +1,7 @@
 package com.tiandelei.crm.workbench.service;
 
+import com.tiandelei.crm.workbench.domain.Clue;
+
 /**
  * Author:田得雷
  * 2019/7/3
@@ -7,5 +9,11 @@ package com.tiandelei.crm.workbench.service;
 public interface ClueService {
 
 
+    boolean save(Clue c);
 
+    Clue detail(String id);
+
+    boolean dissociated(String id);
+
+    boolean bund(String cid, String[] aids);
 }

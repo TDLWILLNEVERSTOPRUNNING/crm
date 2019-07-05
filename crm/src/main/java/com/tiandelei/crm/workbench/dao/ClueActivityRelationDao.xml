@@ -4,9 +4,19 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.tiandelei.crm.workbench.dao.ClueActivityRelationDao">
-	
-	
-  	
+
+    <insert id="save">
+
+        insert into tbl_clue_activity_relation (id,clueId,activityId) values(#{id},#{clueId},#{activityId})
+
+    </insert>
+
+    <delete id="dissociated">
+
+        delete from tbl_clue_activity_relation where id=#{id}
+
+    </delete>
+
 </mapper>
 
 
