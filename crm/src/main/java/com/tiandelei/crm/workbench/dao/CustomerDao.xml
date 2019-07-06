@@ -5,10 +5,46 @@
 
 <mapper namespace="com.tiandelei.crm.workbench.dao.CustomerDao">
 
+    <insert id="save">
+
+        insert into tbl_customer(
+
+            id,
+            owner,
+            name,
+            website,
+            phone,
+            createBy,
+            createTime,
+            contactSummary,
+            nextContactTime,
+            description,
+            address
+
+
+        )
+
+        values(
+
+            #{id},
+            #{owner},
+            #{name},
+            #{website},
+            #{phone},
+            #{createBy},
+            #{createTime},
+            #{contactSummary},
+            #{nextContactTime},
+            #{description},
+            #{address}
+
+        )
+
+    </insert>
 
     <select id="getByName" resultType="Customer">
 
-        select * from ;
+        select * from tbl_customer where name=#{name}
 
     </select>
   	

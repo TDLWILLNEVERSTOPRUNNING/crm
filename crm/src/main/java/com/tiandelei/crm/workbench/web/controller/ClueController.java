@@ -1,7 +1,6 @@
 package com.tiandelei.crm.workbench.web.controller;
 
 
-
 import com.tiandelei.crm.settings.domin.User;
 import com.tiandelei.crm.settings.service.UserService;
 import com.tiandelei.crm.settings.service.impl.UserServiceImpl;
@@ -76,12 +75,12 @@ public class ClueController extends HttpServlet {
 
         } else if ("/workbench/clue/convert.do".equals(path)) {
 
-            //convert(request, response);
+            convert(request, response);
 
         }
     }
 
-//    private void convert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    //    private void convert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 //
 //        System.out.println("执行线索的转换操作");
 //
@@ -139,6 +138,76 @@ public class ClueController extends HttpServlet {
 //        }
 //
 //    }
+    private void convert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        System.out.println("执行线索的转换操作");
+
+        String clueId = request.getParameter("clueId");
+
+        String flag = request.getParameter("flag");
+
+        String createBy = ((User) request.getSession().getAttribute("user")).getName();
+
+        Tran t = null;
+
+        //如果标记为a，说明需要创建交易
+        if ("a".equals(flag)) {
+
+            t = new Tran();
+
+            //接收交易相关参数
+            String money = request.getParameter("money");
+            String name = request.getParameter("name");
+            String expectedDate = request.getParameter("expectedDate");
+            String stage = request.getParameter("stage");
+            String activityId = request.getParameter("activityId");
+            String id = UUIDUtil.getUUID();
+            String createTime = DateTimeUtil.getSysTime();
+
+
+            t.setId(id);
+            t.setMoney(money);
+            t.setName(name);
+            t.setExpectedDate(expectedDate);
+            t.setStage(stage);
+            t.setActivityId(activityId);
+            t.setCreateBy(createBy);
+            t.setCreateTime(createTime);
+
+
+        }
+
+        //t-----------------------
+
+        ClueService cs = (ClueService) ServiceFactory.getService(new ClueServiceImpl());
+
+        /*
+
+            需要为业务层提供哪些参数：
+
+            clueId
+            t
+
+
+         */
+        boolean flag1 = cs.convert(clueId, t, createBy);
+
+        //如果转换成功
+        if (flag1) {
+
+            //重定向到列表页
+            response.sendRedirect(request.getContextPath() + "/workbench/clue/index.jsp");
+
+
+            //如果转换失败
+        } else {
+
+            //提供一个错误页
+
+        }
+
+
+    }
 
     private void getActivityListByName(HttpServletRequest request, HttpServletResponse response) {
 
@@ -179,7 +248,7 @@ public class ClueController extends HttpServlet {
 
         ClueService cs = (ClueService) ServiceFactory.getService(new ClueServiceImpl());
 
-        boolean flag = cs.bund(cid,aids);
+        boolean flag = cs.bund(cid, aids);
 
         PrintJson.printJsonFlag(response, flag);
 
@@ -192,7 +261,7 @@ public class ClueController extends HttpServlet {
         String aname = request.getParameter("aname");
         String clueId = request.getParameter("clueId");
 
-        Map<String,String> map = new HashMap<>();
+        Map<String, String> map = new HashMap<>();
         map.put("aname", aname);
         map.put("clueId", clueId);
 
@@ -231,7 +300,7 @@ public class ClueController extends HttpServlet {
 
     }
 
-    private void detail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    private void detail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         System.out.println("跳转到详细信息页");
 
@@ -246,7 +315,7 @@ public class ClueController extends HttpServlet {
 
     }
 
-    private void save(  HttpServletRequest request, HttpServletResponse response) {
+    private void save(HttpServletRequest request, HttpServletResponse response) {
 
         System.out.println("执行线索添加操作");
 
@@ -262,7 +331,7 @@ public class ClueController extends HttpServlet {
         String mphone = request.getParameter("mphone");
         String state = request.getParameter("state");
         String source = request.getParameter("source");
-        String createBy = ((User)request.getSession().getAttribute("user")).getName();
+        String createBy = ((User) request.getSession().getAttribute("user")).getName();
         String createTime = DateTimeUtil.getSysTime();
         String description = request.getParameter("description");
         String contactSummary = request.getParameter("contactSummary");
@@ -285,8 +354,8 @@ public class ClueController extends HttpServlet {
         c.setSource(source);
         c.setCreateBy(createBy);
         c.setCreateTime(createTime);
-        c.setDescription (description);
-        c.setContactSummary (contactSummary);
+        c.setDescription(description);
+        c.setContactSummary(contactSummary);
         c.setNextContactTime(nextContactTime);
         c.setAddress(address);
 

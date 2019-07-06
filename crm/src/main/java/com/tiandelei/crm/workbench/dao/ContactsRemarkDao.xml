@@ -5,7 +5,34 @@
 
 <mapper namespace="com.tiandelei.crm.workbench.dao.ContactsRemarkDao">
 
-  	
+    <insert id="save">
+
+        insert into tbl_contacts_remark(
+
+            id,
+            noteContent,
+            createTime,
+            createBy,
+            editFlag,
+            contactsId
+
+
+        )
+
+        values(
+
+            #{id},
+            #{noteContent},
+            #{createTime},
+            #{createBy},
+            #{editFlag},
+            #{contactsId}
+
+        )
+
+
+
+    </insert>
 </mapper>
 
 

@@ -107,7 +107,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 			}
 
-		})
+		});
 
 		//为转换按钮绑定事件
 		$("#convertBtn").click(function () {
@@ -121,8 +121,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			//需要创建交易
 			if ($("#isCreateTransaction").prop("checked")) {
 
+
+				//window.location.href = "workbench/clue/convert.do?clueId=${param.id}";
 				//通过from表单传（后期有可能参数量过大）
-				window.location.href = "workbench/clue/convert.do?clueId=${param.id}";
+				$("#tranForm").submit();
 
 				//不需要创建交易
 			} else {
@@ -210,7 +212,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	</div>
 	<div id="create-transaction2" style="position: relative; left: 40px; top: 20px; width: 80%; background-color: #F7F7F7; display: none;" >
 	
-		<form>
+		<form action="workbench/clue/convert.do" method="post" id="tranForm">
+
+			<input type="hidden" name="flag" value="a"/>
+			<input type="hidden" name="clueId" value="${param.id}"/>
+
 		  <div class="form-group" style="width: 400px; position: relative; left: 20px;">
 		    <label for="amountOfMoney">金额</label>
 		    <input type="text" class="form-control" id="amountOfMoney">

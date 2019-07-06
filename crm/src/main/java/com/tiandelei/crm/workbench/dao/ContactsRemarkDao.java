@@ -4,5 +4,6 @@ import com.tiandelei.crm.workbench.domain.ContactsRemark;
 
 public interface ContactsRemarkDao {
 
+
     int save(ContactsRemark contactsRemark);
 }
