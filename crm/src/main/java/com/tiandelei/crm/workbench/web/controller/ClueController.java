@@ -11,6 +11,7 @@ import com.tiandelei.crm.utils.ServiceFactory;
 import com.tiandelei.crm.utils.UUIDUtil;
 import com.tiandelei.crm.workbench.domain.Activity;
 import com.tiandelei.crm.workbench.domain.Clue;
+import com.tiandelei.crm.workbench.domain.Tran;
 import com.tiandelei.crm.workbench.service.ActivityService;
 import com.tiandelei.crm.workbench.service.ClueService;
 import com.tiandelei.crm.workbench.service.impl.ActivityServiceImpl;
@@ -75,16 +76,69 @@ public class ClueController extends HttpServlet {
 
         } else if ("/workbench/clue/convert.do".equals(path)) {
 
-            convert(request, response);
+            //convert(request, response);
 
         }
     }
 
-    private void convert(HttpServletRequest request, HttpServletResponse response) {
-
-        System.out.println("执行线索的转换操作");
-
-    }
+//    private void convert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+//
+//        System.out.println("执行线索的转换操作");
+//
+//        String clueId = request.getParameter("clueId");
+//
+//        String flag = request.getParameter("flag");
+//
+//        String createBy = ((User)request.getSession().getAttribute("user")).getName();
+//
+//        Tran t = null;
+//
+//        //如果标记为a说明需要创建交易
+//        if ("a".equals(flag)) {
+//
+//            t = new Tran();
+//
+//            //接收交易相关得参数
+//            String money = request.getParameter("money");
+//            String name = request.getParameter("name");
+//            String expectedDate = request.getParameter("expectedDate");
+//            String stage = request.getParameter("stage");
+//            String activityId = request.getParameter("activityId");
+//            String id = UUIDUtil.getUUID();
+//            String createTime = DateTimeUtil.getSysTime();
+//
+//
+//            t.setId(id);
+//            t.setName(name);
+//            t.setMoney(money);
+//            t.setActivityId(activityId);
+//            t.setStage(stage);
+//            t.setExpectedDate(expectedDate);
+//            t.setCreateTime(createTime);
+//            t.setCreateBy(createBy);
+//
+//        }
+//
+//        //t如果为空 对象没有创建出来if没走 不需要创建交易 如果t不为空说明交易需要创建
+//        //t传递到业务层如果不为空就需要创建交易，为空就不创建
+//
+//        ClueService cs = (ClueService) ServiceFactory.getService(new ClueServiceImpl());
+//
+//        //boolean flog = cs.convert(clueId,t,createBy);
+//
+//        //传统请求 转发   如果转换成功
+//        //if (flog) {
+//            //如果转换成功，重定向到列表页
+//            response.sendRedirect(request.getContextPath() + "/workbench/clue/index.jsp");
+//
+//        //如果转换失败
+//       // } else {
+//            //如果转换失败，重定向到错误页
+//
+//
+//        }
+//
+//    }
 
     private void getActivityListByName(HttpServletRequest request, HttpServletResponse response) {
 

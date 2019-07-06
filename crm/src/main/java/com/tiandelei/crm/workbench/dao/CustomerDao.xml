@@ -4,7 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.tiandelei.crm.workbench.dao.CustomerDao">
-	
+
+
+    <select id="getByName" resultType="Customer">
+
+        select * from ;
+
+    </select>
   	
 </mapper>
 

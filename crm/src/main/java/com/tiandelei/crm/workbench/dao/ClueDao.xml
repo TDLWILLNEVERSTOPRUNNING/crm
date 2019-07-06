@@ -5,6 +5,13 @@
 
 <mapper namespace="com.tiandelei.crm.workbench.dao.ClueDao">
 
+    <select id="getById" resultType="Clue">
+
+        select * from ;
+
+    </select>
+
+
     <select id="detail" resultType="Clue">
 
         select
